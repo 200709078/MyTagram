@@ -13,27 +13,26 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class PostActivity extends AppCompatActivity { //
+public class PostActivity extends AppCompatActivity {
 
-    static final int CAPTURE_IMAGE = 0;//
+    static final int CAPTURE_IMAGE = 0;
     ImageView img;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //
-        super.onCreate(savedInstanceState); //
-        setContentView(R.layout.activity_post); //
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_post);
 
-        img = (ImageView) findViewById(R.id.imageView); //
+        img = (ImageView) findViewById(R.id.imageView);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { //
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //
-                if (intent.resolveActivity(getPackageManager()) != null) { //
-                    startActivityForResult(intent, CAPTURE_IMAGE); //
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, CAPTURE_IMAGE);
                 }
             }
         });
-
 
 
         final EditText txtMsg = (EditText) findViewById(R.id.txtMessage);
@@ -63,7 +62,7 @@ public class PostActivity extends AppCompatActivity { //
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data); //
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE && resultCode == Activity.RESULT_OK) {
             Bundle bundle = data.getExtras();
             Bitmap image = (Bitmap) bundle.get("data");
